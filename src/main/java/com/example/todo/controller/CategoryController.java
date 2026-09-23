@@ -30,4 +30,20 @@ public class CategoryController {
     public Category addCategory(@RequestBody Category categoryObj) {
         return categoryService.addCategory(categoryObj);
     }
+
+    @GetMapping("/{id]")
+    public Category getCategory(@PathVariable(value = "id") Long id) {
+        return categoryService.getCategory(id);
+    }
+
+    @PutMapping("/{id}")
+    public Category updateCategory(@PathVariable(value = "id") Long id, @RequestBody Category categoryObj) {
+        return  categoryService.updateCategory(id, categoryObj);
+    }
+
+    @DeleteMapping("/{id}")
+    public Category deleteCategory(@PathVariable(value = "id") Long id) {
+        return categoryService.deleteCategory(id);
+    }
+
 }

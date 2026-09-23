@@ -35,4 +35,22 @@ public class CategoryService {
             throw new InformationNotFoundException("category with id " + id + " doesn't exist");
         return category;
     }
+
+    public Category updateCategory(Long id, Category categoryObj) {
+        Category category = categoryRepository.findById(id).orElseThrow( () -> {
+            throw new InformationNotFoundException("category with id " + id + " doesn't exist");
+        });
+        category.setName(categoryObj.getName());
+        category.setDescription(categoryObj.getDescription());
+        categoryRepository.save(category);
+        return category;
+    }
+
+    public Category deleteCategory(Long id) {
+        Category category = categoryRepository.findById(id).orElseThrow( () -> {
+            throw new InformationNotFoundException("category with id " + id + " doesn't exist");
+        });
+        categoryRepository.deleteById(id);
+        return category;
+    }
 }
