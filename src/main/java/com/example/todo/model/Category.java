@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -19,4 +20,7 @@ public class Category {
     private String name;
     @Column
     private String description;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", orphanRemoval = true)
+    List<Item> itemsList;
 }
