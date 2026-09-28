@@ -1,6 +1,7 @@
 package com.example.todo.controller;
 
 import com.example.todo.model.User;
+import com.example.todo.model.request.LoginRequest;
 import com.example.todo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,12 @@ public class UserController {
     public User createUser(@RequestBody User userObject) {
         System.out.println("calling createUser ==>");
         return userService.createUser(userObject);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest) {
+        System.out.println("Calling LoginUser ==>");
+        return userService.loginUser(loginRequest);
     }
 
 }

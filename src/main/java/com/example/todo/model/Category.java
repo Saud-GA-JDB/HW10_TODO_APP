@@ -1,5 +1,6 @@
 package com.example.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,4 +24,11 @@ public class Category {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", orphanRemoval = true)
     List<Item> itemsList;
+
+    /********** add user **********/
+    // many categories belong to a one user
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 }
